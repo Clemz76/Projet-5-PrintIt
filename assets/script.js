@@ -27,6 +27,7 @@ let index = 0;
 
 createBulletPoints();
 clickRightArrow();
+clickLeftArrow();
 
 function createBulletPoints() {
    for (let i = 0; i < slides.length; i++) {
@@ -46,6 +47,20 @@ function clickRightArrow() {
       index++;
       if (index > slides.length - 1) {
          index = 0;
+      }
+      dots[index].classList.add("dot_selected");
+      bannerImg.src = "assets/images/slideshow/" + slides[index].image;
+      bannerP.innerHTML = slides[index].tagLine;
+   });
+}
+
+function clickLeftArrow() {
+   leftArrow.addEventListener("click", () => {
+      const dots = document.querySelectorAll(".dots .dot");
+      dots[index].classList.remove("dot_selected");
+      index--;
+      if (index < 0) {
+         index = slides.length - 1;
       }
       dots[index].classList.add("dot_selected");
       bannerImg.src = "assets/images/slideshow/" + slides[index].image;
