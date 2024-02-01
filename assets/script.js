@@ -41,10 +41,13 @@ function createBulletPoints() {
 
 function clickRightArrow() {
    rightArrow.addEventListener("click", () => {
+      const dots = document.querySelectorAll(".dots .dot");
+      dots[index].classList.remove("dot_selected");
       index++;
-      if (index > slides.length) {
+      if (index > slides.length - 1) {
          index = 0;
       }
+      dots[index].classList.add("dot_selected");
       bannerImg.src = "assets/images/slideshow/" + slides[index].image;
       bannerP.innerHTML = slides[index].tagLine;
    });
